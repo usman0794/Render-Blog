@@ -2,13 +2,11 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
-import multer from "multer";
-import path from 'path';
+import path from "path";
 
 import userRoutes from "./routes/user.route.js";
 import authRoutes from "./routes/auth.route.js";
 import postRoutes from "./routes/post.route.js";
-
 
 dotenv.config();
 
@@ -21,14 +19,12 @@ mongoose
     console.log(err);
   });
 
+const __dirname = path.resolve();
+
 const app = express();
-const upload = multer();
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(upload.any());
-
-
 
 app.listen(3000, () => {
   console.log("server is listening on port 3000");
@@ -38,10 +34,10 @@ app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/post", postRoutes);
 
-app.use(express.static(path.join(__dirname, '/client/dist')));
+app.use(express.static(path.join(__dirname, "/client/dist")));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
 });
 
 app.use((err, req, res, next) => {
@@ -50,6 +46,6 @@ app.use((err, req, res, next) => {
   res.status(statusCode).json({
     success: false,
     statusCode,
-    message, 
+    message,
   });
 });
