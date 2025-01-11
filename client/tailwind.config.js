@@ -7,8 +7,5 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [
-    flowbite.plugin,
-    tailwindScrollbar,
-  ],
+  plugins: [flowbite.plugin, tailwindScrollbar],
 };
