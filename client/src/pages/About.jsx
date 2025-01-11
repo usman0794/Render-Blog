@@ -31,7 +31,7 @@ export default function About() {
 
         <div className="mt-12">
           <img
-            src="/public/about-tech.jpg"
+            src="/about-tech.jpg"
             alt="About TechCrunch Blog"
             className="rounded-lg shadow-md mx-auto"
           />
